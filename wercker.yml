@@ -1,0 +1,12 @@
+box: merliseclyde/predictive-modeling:latest
+
+build:
+  steps:
+    - script:
+        name: Render R markdown
+        code: |
+          Rscript -e "library(rmarkdown);render('HW4.Rmd')"
+    - script:
+        name: Check for allowed files
+        code: |
+          Rscript -e "source('https://raw.githubusercontent.com/STA521-F19/hw4/master/HW4_whitelist.R')"
